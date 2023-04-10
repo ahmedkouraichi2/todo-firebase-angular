@@ -9,16 +9,42 @@
 
 <div class="row">
    <div class="col-md-12">
-     <form class="form-inline">
+     <form class="form-inline" #f="ngForm" (ngSubmit)="onSubmit(f)">
        <div class=" col-md-10 form-group">
-            <input type="text" placeholder="Add New Categories here" name="categoryName" class=" form-control-plaintext ">
+            <input type="text" placeholder="Add New Categories here" name="categoryName" class=" required form-control-plaintext " [(ngModel)] = 'categoryName' required #category = 'ngModel' [ngClass] = "{'border-danger': f.submitted && category.invalid }">
        </div>
-       <div class="text-danger ml-3" *ngIf = 'true' >
+       <div class="text-danger ml-3" *ngIf = 'f.submitted && category.invalid '  >
         Category is Required ..
       </div>
-      <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block drop-shadow">addd</button>
+      <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block drop-shadow">{{dataStatus}}</button>
      </form>
    </div>
+</div>
+
+
+<div class="row categories-list">
+  <div class="col-md-3" >
+    <div class="card drop-shadow" [style.border-left-color] = ''>
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <div class="badge badge-primary"> CATEGORY </div>
+          </div>
+          <div class="float-right cat-tools">
+            <small><i class="fa fa-pencil-alt text-success" ></i></small>
+            <small><i class="fas fa-trash text-danger" ></i></small>
+          </div>
+        </div>
+
+        <div class="todo-content" [routerLink] = "['/todo']">
+          <h3 [style.color] = ''>category.data.category</h3>
+          <small class="text-secondary"> Lorem ipsum dolor sit amet consectetur adipisicing elit. </small>
+        </div>
+        <span class="badge badge-danger"> category.data.todoCount - Todos</span>
+
+      </div>
+    </div>
+  </div>
 </div>
 
 

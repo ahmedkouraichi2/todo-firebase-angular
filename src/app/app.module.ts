@@ -7,17 +7,26 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { CategoryComponent } from './category/category.component';
 
+import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
+import { TodoComponent } from './todo/todo.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-   
+
     FooterComponent,
-    CategoryComponent
+    CategoryComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
